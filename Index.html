@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AICREATIONS | AI Cinematic Content & Ads</title>
+  <meta name="description" content="AICREATIONS creates cinematic social media videos, ad films, reels, and AI-powered visual content for Instagram, YouTube, and digital brands." />
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-soft: #0d1b2f;
+      --card: rgba(255,255,255,0.08);
+      --stroke: rgba(255,255,255,0.12);
+      --text: #f4f7fb;
+      --muted: #c7d3e0;
+      --accent: #8fd3ff;
+      --accent-2: #dcb3ff;
+      --glow: 0 20px 60px rgba(143, 211, 255, 0.18);
+      --radius: 22px;
+      --max: 1200px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(143,211,255,0.16), transparent 28%),
+        radial-gradient(circle at top right, rgba(220,179,255,0.14), transparent 24%),
+        linear-gradient(180deg, #050b14 0%, #07111f 45%, #091828 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img, video { display: block; width: 100%; border-radius: 18px; }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(5, 11, 20, 0.65);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+    }
+
+    .brand span {
+      color: var(--accent);
+      text-shadow: 0 0 20px rgba(143,211,255,0.35);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .nav-links a:hover,
+    .social a:hover,
+    .btn:hover {
+      opacity: 0.86;
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,0.04);
+      border-radius: 999px;
+      color: var(--accent);
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
+      line-height: 1.02;
+      margin-bottom: 18px;
+      letter-spacing: -0.04em;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 650px;
+      margin-bottom: 24px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 22px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #07111f;
+      border: none;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    .social {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-card,
+    .card,
+    .service,
+    .gallery-card {
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      box-shadow: var(--glow);
+    }
+
+    .hero-card {
+      padding: 16px;
+    }
+
+    .hero-card .label,
+    .section-tag {
+      color: var(--accent);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .main-video video {
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    section {
+      padding: 26px 0 30px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 22px;
+      flex-wrap: wrap;
+    }
+
+    h2 {
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      max-width: 700px;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 0.75fr;
+      gap: 24px;
+    }
+
+    .card {
+      padding: 16px;
+    }
+
+    .card h3 {
+      font-size: 1.12rem;
+      margin: 14px 0 6px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .vertical-video video {
+      aspect-ratio: 9 / 16;
+      max-height: 680px;
+      object-fit: cover;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service {
+      padding: 24px;
+    }
+
+    .service h3 {
+      margin-bottom: 10px;
+      font-size: 1.08rem;
+    }
+
+    .service p {
+      color: var(--muted);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .gallery-card {
+      overflow: hidden;
+    }
+
+    .gallery-card img {
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      border-radius: 0;
+    }
+
+    .gallery-meta {
+      padding: 14px 16px 18px;
+    }
+
+    .gallery-meta h3 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .gallery-meta p {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .about .card {
+      padding: 24px;
+    }
+
+    .about ul {
+      margin-top: 10px;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .about li + li { margin-top: 8px; }
+
+    .cta {
+      margin: 28px 0 60px;
+    }
+
+    .cta-box {
+      padding: 28px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(143,211,255,0.10), rgba(220,179,255,0.08));
+      border: 1px solid var(--stroke);
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--glow);
+    }
+
+    .cta-box p {
+      max-width: 760px;
+      margin: 10px auto 18px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 0 0 36px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .featured-grid,
+      .services-grid,
+      .gallery-grid,
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .vertical-video video {
+        max-width: 420px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-wrap">
+      <a href="#home" class="brand"><span>AI</span>CREATIONS</a>
+      <nav class="nav-links">
+        <a href="#featured">Featured</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">AI-Powered Cinematic Content Studio</span>
+          <h1>Crafting scroll-stopping videos, reels, and ad films for the social world.</h1>
+          <p class="lead">
+            AICREATIONS builds cinematic social media visuals using AI-powered apps for Instagram, YouTube, and digital advertising. From dramatic brand promos to polished reels, every frame is designed to feel sharp, modern, and memorable.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#featured">Watch Featured Work</a>
+            <a class="btn btn-secondary" href="#contact">Book a Project</a>
+          </div>
+          <div class="social">
+            <a href="https://www.instagram.com/aicreation__s/" target="_blank" rel="noopener noreferrer">Instagram: @aicreation__s</a>
+            <a href="https://www.youtube.com/@aicreation_s" target="_blank" rel="noopener noreferrer">YouTube: @aicreation_s</a>
+          </div>
+        </div>
+
+        <div class="hero-card main-video">
+          <span class="label">Main Showcase • 16:9</span>
+          <video controls autoplay muted loop playsinline poster="assets/images/image1.jpg">
+            <source src="assets/videos/main-showcase-16x9.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <section id="featured">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-tag">Featured Content</span>
+            <h2>Showcase built for both widescreen stories and vertical reels.</h2>
+          </div>
+          <p class="section-copy">Upload your first two videos into the assets folder and the homepage becomes your digital cinema lobby.</p>
+        </div>
+
+        <div class="featured-grid">
+          <article class="card">
+            <video controls muted playsinline poster="assets/images/image2.jpg">
+              <source src="assets/videos/main-showcase-16x9.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <h3>Main Cinematic Feature</h3>
+            <p>Use this for your flagship brand video, product ad, or cinematic portfolio highlight in 16:9 ratio.</p>
+          </article>
+
+          <article class="card vertical-video">
+            <video controls muted playsinline poster="assets/images/image3.jpg">
+              <source src="assets/videos/reel-9x16.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <h3>Vertical Reel Feature</h3>
+            <p>Perfect for Instagram Reels, Shorts, and mobile-first promos in 9:16 ratio.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-tag">What We Create</span>
+            <h2>Creative services shaped for modern brands and creators.</h2>
+          </div>
+        </div>
+
+        <div class="services-grid">
+          <div class="service">
+            <h3>Cinematic Social Media Videos</h3>
+            <p>Short-form content with a premium visual feel for Instagram, YouTube, Facebook, and brand pages.</p>
+          </div>
+          <div class="service">
+            <h3>AI Advertisement Making</h3>
+            <p>Smart, fast, eye-catching ad creatives for products, services, launches, and promotional campaigns.</p>
+          </div>
+          <div class="service">
+            <h3>Image & Visual Story Design</h3>
+            <p>Stylized posters, thumbnails, concept visuals, and campaign imagery crafted with AI-powered tools.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="section-tag">Image Gallery</span>
+            <h2>Four visual highlights for your portfolio wall.</h2>
+          </div>
+          <p class="section-copy">Replace these files with your own images and keep refreshing the gallery as new work lands.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <article class="gallery-card">
+            <img src="assets/images/image1.jpg" alt="AI cinematic work sample 1" />
+            <div class="gallery-meta">
+              <h3>Visual Story Frame 01</h3>
+              <p>Add campaign stills, poster work, or a scene frame from your ad projects.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card">
+            <img src="assets/images/image2.jpg" alt="AI cinematic work sample 2" />
+            <div class="gallery-meta">
+              <h3>Visual Story Frame 02</h3>
+              <p>Use high-quality image work that reflects your editing and visual branding style.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card">
+            <img src="assets/images/image3.jpg" alt="AI cinematic work sample 3" />
+            <div class="gallery-meta">
+              <h3>Visual Story Frame 03</h3>
+              <p>Ideal for social media thumbnails, cinematic poster art, or AI-generated compositions.</p>
+            </div>
+          </article>
+
+          <article class="gallery-card">
+            <img src="assets/images/image4.jpg" alt="AI cinematic work sample 4" />
+            <div class="gallery-meta">
+              <h3>Visual Story Frame 04</h3>
+              <p>Keep this section fresh by replacing images anytime with your newest creative output.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container about">
+        <div class="card">
+          <span class="section-tag">About AICREATIONS</span>
+          <h2>Designed for daily updates without technical chaos.</h2>
+          <p class="section-copy">
+            This website is structured to work smoothly on GitHub and Netlify. You can update content by replacing video and image files inside the assets folder, then pushing the changes to GitHub. Netlify will redeploy the site automatically.
+          </p>
+        </div>
+        <div class="card">
+          <span class="section-tag">Easy Update Flow</span>
+          <ul>
+            <li>Replace the two video files inside <strong>assets/videos</strong>.</li>
+            <li>Replace the four image files inside <strong>assets/images</strong>.</li>
+            <li>Commit and push to GitHub.</li>
+            <li>Netlify publishes the update automatically.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="container">
+        <div class="cta-box">
+          <span class="section-tag">Let’s Create</span>
+          <h2>Need cinematic ads, AI reels, or visual campaigns?</h2>
+          <p>
+            AICREATIONS turns ideas into sharp social content built for attention, engagement, and brand memory. Connect through Instagram or YouTube and start your next project.
+          </p>
+          <div class="hero-actions" style="justify-content:center; margin-bottom:0;">
+            <a class="btn btn-primary" href="https://www.instagram.com/aicreation__s/" target="_blank" rel="noopener noreferrer">Message on Instagram</a>
+            <a class="btn btn-secondary" href="https://www.youtube.com/@aicreation_s" target="_blank" rel="noopener noreferrer">Visit YouTube</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 AICREATIONS. AI cinematic content, reels, visuals, and advertisement making.</p>
+    </div>
+  </footer>
+</body>
+</html>
